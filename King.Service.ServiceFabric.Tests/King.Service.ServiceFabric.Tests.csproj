@@ -53,6 +53,12 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\King.Service.ServiceFabric\King.Service.ServiceFabric.csproj">
+      <Project>{e8fb7b7e-b404-4bf3-981f-2d7398d22059}</Project>
+      <Name>King.Service.ServiceFabric</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
