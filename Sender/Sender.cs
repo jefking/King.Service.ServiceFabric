@@ -42,8 +42,7 @@ namespace Sender
 
                     await tx.CommitAsync();
                 }
-
-
+                
                 ServiceEventSource.Current.Message("Sent: {0}.", data);
 
                 await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);

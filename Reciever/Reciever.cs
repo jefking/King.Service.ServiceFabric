@@ -35,7 +35,7 @@ namespace Reciever
 
             while (!cancellationToken.IsCancellationRequested)
             {
-                using (ITransaction tx = this.StateManager.CreateTransaction())
+                using (var tx = this.StateManager.CreateTransaction())
                 {
                     ConditionalResult<string> dequeuReply = await queue.TryDequeueAsync(tx);
 
