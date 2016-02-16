@@ -34,12 +34,17 @@ namespace Sender
 
             while (!cancellationToken.IsCancellationRequested)
             {
+                var data = Guid.NewGuid().ToString();
+
                 using (var tx = this.StateManager.CreateTransaction())
                 {
-                    await queue.EnqueueAsync(tx, "happy");
+                    await queue.EnqueueAsync(tx, data);
 
                     await tx.CommitAsync();
                 }
+
+
+                ServiceEventSource.Current.Message("Sent: {0}.", data);
 
                 await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
             }

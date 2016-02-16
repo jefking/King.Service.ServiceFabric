@@ -41,7 +41,7 @@ namespace Reciever
 
                     if (dequeuReply.HasValue)
                     {
-                        ServiceEventSource.Current.Message(dequeuReply.Value);
+                        ServiceEventSource.Current.Message("Recieved: {0}.", dequeuReply.Value);
                     }
                     
                     await tx.CommitAsync();
