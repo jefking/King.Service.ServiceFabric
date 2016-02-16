@@ -1,12 +1,11 @@
-﻿using Microsoft.ServiceFabric.Data.Collections;
-using Microsoft.ServiceFabric.Services.Communication.Runtime;
-using Microsoft.ServiceFabric.Services.Runtime;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Data;
+using Microsoft.ServiceFabric.Data.Collections;
+using Microsoft.ServiceFabric.Services.Communication.Runtime;
+using Microsoft.ServiceFabric.Services.Runtime;
 
 namespace Reciever
 {
@@ -42,11 +41,9 @@ namespace Reciever
 
                     if (dequeuReply.HasValue)
                     {
-                      //  FileImportValidator.Tell(new ValidateFileCommand(dequeuReply.Value));
+                        ServiceEventSource.Current.Message(dequeuReply.Value);
                     }
-
-                    ServiceEventSource.Current.Message(dequeuReply.Value);
-
+                    
                     await tx.CommitAsync();
                 }
 
