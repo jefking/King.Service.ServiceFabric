@@ -30,7 +30,7 @@ namespace Sender
         /// <param name="cancelServicePartitionReplica">Canceled when Service Fabric terminates this partition's replica.</param>
         protected override async Task RunAsync(CancellationToken cancellationToken)
         {
-            var queue = await StateManager.GetOrAddAsync<IReliableQueue<string>>("inputQueue");
+            var queue = await StateManager.GetOrAddAsync<IReliableQueue<string>>("KingQueue");
 
             while (!cancellationToken.IsCancellationRequested)
             {
