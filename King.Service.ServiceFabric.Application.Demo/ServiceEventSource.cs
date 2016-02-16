@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Demo
+namespace King.Service.ServiceFabric.Application.Demo
 {
     [EventSource(Name = "MyCompany-King.Service.ServiceFabric.Demo-Demo")]
     internal sealed class ServiceEventSource : EventSource

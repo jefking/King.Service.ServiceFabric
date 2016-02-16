@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Fabric;
 using System.Threading;
 
-namespace Demo
+namespace King.Service.ServiceFabric.Application.Demo
 {
     internal static class Program
     {

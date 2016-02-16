@@ -17,9 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "King.Service.ServiceFabric"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "King.Service.ServiceFabric.Tests", "King.Service.ServiceFabric.Tests\King.Service.ServiceFabric.Tests.csproj", "{D63E1201-DCB0-46FA-B872-9DF4734055E3}"
 EndProject
-Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "King.Service.ServiceFabric.Demo", "King.Service.ServiceFabric.Demo\King.Service.ServiceFabric.Demo.sfproj", "{765BF6A2-3C75-49E2-9170-FC8BDA0AA59B}"
+Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "King.Service.ServiceFabric.Demo", "King.Service.ServiceFabric.Demo\King.Service.ServiceFabric.Demo.sfproj", "{A6328479-A779-46C6-89DC-4AD87A2EAD3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", "{C8D1E1A8-FEA8-4344-AB2D-A6CC41560547}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "King.Service.ServiceFabric.Application.Demo", "King.Service.ServiceFabric.Application.Demo\King.Service.ServiceFabric.Application.Demo.csproj", "{9AC35743-A953-48D6-AE4D-5D899DE288DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,27 +45,27 @@ Global
 		{D63E1201-DCB0-46FA-B872-9DF4734055E3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D63E1201-DCB0-46FA-B872-9DF4734055E3}.Release|x64.ActiveCfg = Release|Any CPU
 		{D63E1201-DCB0-46FA-B872-9DF4734055E3}.Release|x64.Build.0 = Release|Any CPU
-		{765BF6A2-3C75-49E2-9170-FC8BDA0AA59B}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{765BF6A2-3C75-49E2-9170-FC8BDA0AA59B}.Debug|x64.ActiveCfg = Debug|x64
-		{765BF6A2-3C75-49E2-9170-FC8BDA0AA59B}.Debug|x64.Build.0 = Debug|x64
-		{765BF6A2-3C75-49E2-9170-FC8BDA0AA59B}.Debug|x64.Deploy.0 = Debug|x64
-		{765BF6A2-3C75-49E2-9170-FC8BDA0AA59B}.Release|Any CPU.ActiveCfg = Release|x64
-		{765BF6A2-3C75-49E2-9170-FC8BDA0AA59B}.Release|x64.ActiveCfg = Release|x64
-		{765BF6A2-3C75-49E2-9170-FC8BDA0AA59B}.Release|x64.Build.0 = Release|x64
-		{765BF6A2-3C75-49E2-9170-FC8BDA0AA59B}.Release|x64.Deploy.0 = Release|x64
-		{C8D1E1A8-FEA8-4344-AB2D-A6CC41560547}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{C8D1E1A8-FEA8-4344-AB2D-A6CC41560547}.Debug|x64.ActiveCfg = Debug|x64
-		{C8D1E1A8-FEA8-4344-AB2D-A6CC41560547}.Debug|x64.Build.0 = Debug|x64
-		{C8D1E1A8-FEA8-4344-AB2D-A6CC41560547}.Release|Any CPU.ActiveCfg = Release|x64
-		{C8D1E1A8-FEA8-4344-AB2D-A6CC41560547}.Release|x64.ActiveCfg = Release|x64
-		{C8D1E1A8-FEA8-4344-AB2D-A6CC41560547}.Release|x64.Build.0 = Release|x64
+		{A6328479-A779-46C6-89DC-4AD87A2EAD3B}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{A6328479-A779-46C6-89DC-4AD87A2EAD3B}.Debug|x64.ActiveCfg = Debug|x64
+		{A6328479-A779-46C6-89DC-4AD87A2EAD3B}.Debug|x64.Build.0 = Debug|x64
+		{A6328479-A779-46C6-89DC-4AD87A2EAD3B}.Debug|x64.Deploy.0 = Debug|x64
+		{A6328479-A779-46C6-89DC-4AD87A2EAD3B}.Release|Any CPU.ActiveCfg = Release|x64
+		{A6328479-A779-46C6-89DC-4AD87A2EAD3B}.Release|x64.ActiveCfg = Release|x64
+		{A6328479-A779-46C6-89DC-4AD87A2EAD3B}.Release|x64.Build.0 = Release|x64
+		{A6328479-A779-46C6-89DC-4AD87A2EAD3B}.Release|x64.Deploy.0 = Release|x64
+		{9AC35743-A953-48D6-AE4D-5D899DE288DC}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{9AC35743-A953-48D6-AE4D-5D899DE288DC}.Debug|x64.ActiveCfg = Debug|x64
+		{9AC35743-A953-48D6-AE4D-5D899DE288DC}.Debug|x64.Build.0 = Debug|x64
+		{9AC35743-A953-48D6-AE4D-5D899DE288DC}.Release|Any CPU.ActiveCfg = Release|x64
+		{9AC35743-A953-48D6-AE4D-5D899DE288DC}.Release|x64.ActiveCfg = Release|x64
+		{9AC35743-A953-48D6-AE4D-5D899DE288DC}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D63E1201-DCB0-46FA-B872-9DF4734055E3} = {4B6B25B9-453A-4E32-B5D5-11B8320349B2}
-		{765BF6A2-3C75-49E2-9170-FC8BDA0AA59B} = {A09EB278-0EFB-434E-80AB-7C44E091F08E}
-		{C8D1E1A8-FEA8-4344-AB2D-A6CC41560547} = {A09EB278-0EFB-434E-80AB-7C44E091F08E}
+		{A6328479-A779-46C6-89DC-4AD87A2EAD3B} = {A09EB278-0EFB-434E-80AB-7C44E091F08E}
+		{9AC35743-A953-48D6-AE4D-5D899DE288DC} = {A09EB278-0EFB-434E-80AB-7C44E091F08E}
 	EndGlobalSection
 EndGlobal
