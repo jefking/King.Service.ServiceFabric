@@ -29,40 +29,27 @@ namespace Demo
         /// RunAsync executes when the primary replica for this partition has write status.
         /// </summary>
         /// <param name="cancelServicePartitionReplica">Canceled when Service Fabric terminates this partition's replica.</param>
-        protected override async Task RunAsync(CancellationToken cancelServicePartitionReplica)
+        protected override async Task RunAsync(CancellationToken cancellationToken)
         {
-            // TODO: Replace the following sample code with your own logic.
+            var queue = await StateManager.GetOrAddAsync<IReliableQueue<string>>("inputQueue");
 
-            // Gets (or creates) a replicated dictionary called "myDictionary" in this partition.
-            var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
-
-            // This partition's replica continues processing until the replica is terminated.
-            while (!cancelServicePartitionReplica.IsCancellationRequested)
+            while (!cancellationToken.IsCancellationRequested)
             {
-
-                // Create a transaction to perform operations on data within this partition's replica.
                 using (var tx = this.StateManager.CreateTransaction())
                 {
+                    ConditionalResult<string> dequeuReply = await queue.TryDequeueAsync(tx);
 
-                    // Try to read a value from the dictionary whose key is "Counter-1".
-                    var result = await myDictionary.TryGetValueAsync(tx, "Counter-1");
+                    if (dequeuReply.HasValue)
+                    {
+                        FileImportValidator.Tell(new ValidateFileCommand(dequeuReply.Value));
+                    }
 
-                    // Log whether the value existed or not.
-                    ServiceEventSource.Current.ServiceMessage(this, "Current Counter Value: {0}",
-                        result.HasValue ? result.Value.ToString() : "Value does not exist.");
+                    ServiceEventSource.Current.Message(dequeuReply.Value);
 
-                    // If the "Counter-1" key doesn't exist, set its value to 0
-                    // else add 1 to its current value.
-                    await myDictionary.AddOrUpdateAsync(tx, "Counter-1", 0, (k, v) => ++v);
-
-                    // Committing the transaction serializes the changes and writes them to this partition's secondary replicas.
-                    // If an exception is thrown before calling CommitAsync, the transaction aborts, all changes are 
-                    // discarded, and nothing is sent to this partition's secondary replicas.
                     await tx.CommitAsync();
                 }
 
-                // Pause for 1 second before continue processing.
-                await Task.Delay(TimeSpan.FromSeconds(1), cancelServicePartitionReplica);
+                await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
             }
         }
     }
