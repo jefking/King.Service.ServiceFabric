@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.ServiceFabric.Data;
-using Microsoft.ServiceFabric.Data.Collections;
-using Microsoft.ServiceFabric.Services.Communication.Runtime;
-using Microsoft.ServiceFabric.Services.Runtime;
-
-namespace Reciever
+﻿namespace Reciever
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.ServiceFabric.Data;
+    using Microsoft.ServiceFabric.Data.Collections;
+    using Microsoft.ServiceFabric.Services.Communication.Runtime;
+    using Microsoft.ServiceFabric.Services.Runtime;
+
     /// <summary>
     /// The FabricRuntime creates an instance of this class for each service type instance.
     /// </summary>
@@ -37,7 +37,7 @@ namespace Reciever
             {
                 using (var tx = this.StateManager.CreateTransaction())
                 {
-                    ConditionalResult<string> dequeuReply = await queue.TryDequeueAsync(tx);
+                    var dequeuReply = await queue.TryDequeueAsync(tx);
 
                     if (dequeuReply.HasValue)
                     {

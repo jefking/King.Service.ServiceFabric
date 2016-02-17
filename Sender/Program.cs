@@ -1,10 +1,10 @@
-﻿using System;
-using System.Diagnostics;
-using System.Fabric;
-using System.Threading;
-
-namespace Sender
+﻿namespace Sender
 {
+    using System;
+    using System.Diagnostics;
+    using System.Fabric;
+    using System.Threading;
+
     internal static class Program
     {
         /// <summary>
@@ -15,7 +15,7 @@ namespace Sender
             try
             {
                 // Creating a FabricRuntime connects this host process to the Service Fabric runtime.
-                using (FabricRuntime fabricRuntime = FabricRuntime.Create())
+                using (var fabricRuntime = FabricRuntime.Create())
                 {
                     // The ServiceManifest.XML file defines one or more service type names.
                     // RegisterServiceType maps a service type name to a .NET class.
