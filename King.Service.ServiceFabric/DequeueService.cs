@@ -14,8 +14,8 @@
         #region Members
         protected readonly IProcessor<T> processor;
         protected readonly string name;
-
         #endregion
+
         protected DequeueService(string name, IProcessor<T> processor)
         {
             if (string.IsNullOrWhiteSpace(name))
