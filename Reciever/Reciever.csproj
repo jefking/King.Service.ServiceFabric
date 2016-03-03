@@ -36,12 +36,12 @@
     <AdditionalFileItemNames>$(AdditionalFileItemNames);None</AdditionalFileItemNames>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="King.Azure, Version=1.0.1.33, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\King.Azure.1.1.22\lib\net45\King.Azure.dll</HintPath>
+    <Reference Include="King.Azure, Version=1.0.1.35, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\King.Azure.1.1.24\lib\net45\King.Azure.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="King.Service, Version=1.5.6.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\King.Service.1.12.5\lib\net45\King.Service.dll</HintPath>
+    <Reference Include="King.Service, Version=1.5.6.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\King.Service.1.12.6\lib\net45\King.Service.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="King.Service.ServiceFabric, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
