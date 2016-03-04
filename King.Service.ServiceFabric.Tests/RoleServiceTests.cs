@@ -1,8 +1,10 @@
 ﻿namespace King.Service.ServiceFabric.Tests
 {
-    using System;
     using NSubstitute;
     using NUnit.Framework;
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     [TestFixture]
     public class RoleServiceTests
@@ -32,6 +34,35 @@
         public void ConstructorManagerNull()
         {
             Assert.That(() => new RoleService<object>(null), Throws.TypeOf<ArgumentNullException>());
+        }
+
+        [Test]
+        public async Task RunAsyncOnStartFalse()
+        {
+            var config = new object();
+            var manager = Substitute.For<IRoleTaskManager<object>>();
+            manager.OnStart(config).Returns(false);
+
+            var rs = new RoleFake<object>(manager, config);
+
+            await rs.RunTest(CancellationToken.None);
+
+            manager.Received().OnStart(config);
+        }
+
+        [Test]
+        public async Task RunAsync()
+        {
+            var config = new object();
+            var manager = Substitute.For<IRoleTaskManager<object>>();
+            manager.OnStart(config).Returns(true);
+
+            var rs = new RoleFake<object>(manager, config);
+
+            await rs.RunTest(CancellationToken.None);
+
+            manager.Received().OnStart(config);
+            manager.Received().Run();
         }
     }
 }
