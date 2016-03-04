@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sender
+namespace King.Service.ServiceFabric.Demo.General
 {
-    [EventSource(Name = "MyCompany-King.Service.ServiceFabric.Demo-Sender")]
+    [EventSource(Name = "MyCompany-King.Service.ServiceFabric.Demo-General")]
     internal sealed class ServiceEventSource : EventSource
     {
         public static readonly ServiceEventSource Current = new ServiceEventSource();
