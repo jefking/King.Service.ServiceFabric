@@ -44,8 +44,8 @@
       <HintPath>..\packages\King.Service.1.12.6\lib\net45\King.Service.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="King.Service.ServiceFabric, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\King.Service.ServiceFabric.0.0.2-beta\lib\net45\King.Service.ServiceFabric.dll</HintPath>
+    <Reference Include="King.Service.ServiceFabric, Version=1.0.1.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\King.Service.ServiceFabric.1.0.0\lib\net45\King.Service.ServiceFabric.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
