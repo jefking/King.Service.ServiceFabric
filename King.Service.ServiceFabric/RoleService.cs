@@ -70,7 +70,7 @@
             }
             else
             {
-                Trace.TraceError("Task Manager failed to start. Service not running.");
+                Trace.TraceError("Task Manager failed to start. Service did not complete start process successfully.");
             }
         }
         #endregion
