@@ -9,7 +9,7 @@
     /// <summary>
     /// Role Service
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">Configuration Type</typeparam>
     public class RoleService<T> : StatelessService
     {
         #region Members
