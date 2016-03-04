@@ -1,10 +1,10 @@
 ﻿namespace King.Service.ServiceFabric
 {
+    using Microsoft.ServiceFabric.Services.Runtime;
     using System;
     using System.Diagnostics;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.ServiceFabric.Services.Runtime;
 
     /// <summary>
     /// Role Service
@@ -54,9 +54,16 @@
             {
                 this.taskManager.Run();
 
-                while (!cancellationToken.IsCancellationRequested)
+                try
                 {
-                    await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
+                    while (!cancellationToken.IsCancellationRequested)
+                    {
+                        await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
+                    }
+                }
+                catch (TaskCanceledException ex)
+                {
+                    Trace.TraceError("Task Canceled Exception, can be normal: {0}", ex);
                 }
 
                 this.taskManager.OnStop();

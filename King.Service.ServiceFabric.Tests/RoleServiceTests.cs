@@ -59,10 +59,35 @@
 
             var rs = new RoleFake<object>(manager, config);
 
-            await rs.RunTest(CancellationToken.None);
+            var ct = new CancellationToken(true);
+
+            await rs.RunTest(ct);
 
             manager.Received().OnStart(config);
             manager.Received().Run();
+            manager.Received().OnStop();
+        }
+
+        [Test]
+        public async Task RunAsyncWithLoop()
+        {
+            var config = new object();
+            var manager = Substitute.For<IRoleTaskManager<object>>();
+            manager.OnStart(config).Returns(true);
+
+            var rs = new RoleFake<object>(manager, config);
+
+            var ct = new CancellationTokenSource();
+
+            using (var t = new Timer(new TimerCallback((object obj) => { ct.Cancel(); }), null, 2, Timeout.Infinite))
+            {
+
+                await rs.RunTest(ct.Token);
+
+                manager.Received().OnStart(config);
+                manager.Received().Run();
+                manager.Received().OnStop();
+            }
         }
     }
 }
