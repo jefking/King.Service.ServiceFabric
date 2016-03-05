@@ -51,7 +51,7 @@
             var manager = Substitute.For<IRoleTaskManager<object>>();
             manager.OnStart(config).Returns(false);
 
-            var rs = new RoleFake<object>(manager, config);
+            var rs = new RoleServiceFake<object>(manager, config);
 
             await rs.RunTest(CancellationToken.None);
 
@@ -65,7 +65,7 @@
             var manager = Substitute.For<IRoleTaskManager<object>>();
             manager.OnStart(config).Returns(true);
 
-            var rs = new RoleFake<object>(manager, config);
+            var rs = new RoleServiceFake<object>(manager, config);
 
             var ct = new CancellationToken(true);
 
@@ -83,7 +83,7 @@
             var manager = Substitute.For<IRoleTaskManager<object>>();
             manager.OnStart(config).Returns(true);
 
-            var rs = new RoleFake<object>(manager, config);
+            var rs = new RoleServiceFake<object>(manager, config);
 
             var ct = new CancellationTokenSource();
 

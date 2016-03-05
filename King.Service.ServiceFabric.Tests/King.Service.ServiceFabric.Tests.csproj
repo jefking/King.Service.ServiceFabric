@@ -137,8 +137,9 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="FakeDequeueService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RoleFake.cs" />
+    <Compile Include="RoleServiceFake.cs" />
     <Compile Include="RoleServiceTests.cs" />
     <Compile Include="DequeueServiceTests.cs" />
   </ItemGroup>

@@ -3,9 +3,9 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class RoleFake<T> : RoleService<T>
+    public class RoleServiceFake<T> : RoleService<T>
     {
-        public RoleFake(IRoleTaskManager<T> taskManager, T config = default(T))
+        public RoleServiceFake(IRoleTaskManager<T> taskManager, T config = default(T))
             : base(taskManager, config)
         {
         }
