@@ -1,6 +1,7 @@
 ﻿namespace King.Service.ServiceFabric
 {
     using System;
+    using System.Diagnostics;
     using System.Threading;
     using System.Threading.Tasks;
     using Azure.Data;
@@ -55,21 +56,28 @@
         /// <returns>Task</returns>
         protected override async Task RunAsync(CancellationToken cancellationToken)
         {
-            var queue = await this.StateManager.GetOrAddAsync<IReliableQueue<T>>(this.queueName);
-
-            using (var tx = this.StateManager.CreateTransaction())
+            if (!cancellationToken.IsCancellationRequested)
             {
-                var message = await queue.TryDequeueAsync(tx);
+                var queue = await this.StateManager.GetOrAddAsync<IReliableQueue<T>>(this.queueName);
 
-                if (message.HasValue)
+                using (var tx = this.StateManager.CreateTransaction())
                 {
-                    var success = await this.processor.Process(message.Value);
+                    var message = await queue.TryDequeueAsync(tx);
 
-                    if (success)
+                    if (message.HasValue)
                     {
-                        await tx.CommitAsync();
+                        var success = await this.processor.Process(message.Value);
+
+                        if (success)
+                        {
+                            await tx.CommitAsync();
+                        }
                     }
                 }
+            }
+            else
+            {
+                Trace.TraceInformation("Dequeue not run, cancelation called.");
             }
         }
         #endregion
