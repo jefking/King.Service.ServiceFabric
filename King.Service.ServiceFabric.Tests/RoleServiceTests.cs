@@ -1,10 +1,11 @@
 ﻿namespace King.Service.ServiceFabric.Tests
 {
-    using NSubstitute;
-    using NUnit.Framework;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Microsoft.ServiceFabric.Services.Runtime;
+    using NSubstitute;
+    using NUnit.Framework;
 
     [TestFixture]
     public class RoleServiceTests
@@ -21,6 +22,13 @@
         {
             var manager = Substitute.For<IRoleTaskManager<object>>();
             new RoleService<object>(manager, new object());
+        }
+
+        [Test]
+        public void IsStatelessService()
+        {
+            var manager = Substitute.For<IRoleTaskManager<object>>();
+            Assert.IsNotNull(new RoleService<object>(manager) as StatelessService);
         }
 
         [Test]
