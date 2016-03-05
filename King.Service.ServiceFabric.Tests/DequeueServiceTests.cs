@@ -2,6 +2,7 @@
 {
     using System;
     using Azure.Data;
+    using Microsoft.ServiceFabric.Services.Runtime;
     using NSubstitute;
     using NUnit.Framework;
 
@@ -13,6 +14,13 @@
         {
             var processor = Substitute.For<IProcessor<object>>();
             new DequeueService<object>(Guid.NewGuid().ToString(), processor);
+        }
+
+        [Test]
+        public void IsStatelessService()
+        {
+            var processor = Substitute.For<IProcessor<object>>();
+            Assert.IsNotNull(new DequeueService<object>(Guid.NewGuid().ToString(), processor) as StatefulService);
         }
 
         [Test]
