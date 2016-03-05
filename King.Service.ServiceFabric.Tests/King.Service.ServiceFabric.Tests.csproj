@@ -140,6 +140,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleFake.cs" />
     <Compile Include="RoleServiceTests.cs" />
+    <Compile Include="DequeueServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\King.Service.ServiceFabric\King.Service.ServiceFabric.csproj">
