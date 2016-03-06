@@ -24,6 +24,8 @@
         /// Queue Name
         /// </summary>
         protected readonly string queueName;
+
+        protected readonly int seconds = 15;
         #endregion
 
         #region Constructors
@@ -32,7 +34,8 @@
         /// </summary>
         /// <param name="queueName">Queue Name</param>
         /// <param name="processor">Processor</param>
-        public DequeueService(string queueName, IProcessor<T> processor)
+        /// <param name="seconds">Check every</param>
+        public DequeueService(string queueName, IProcessor<T> processor, int seconds = 15)
         {
             if (string.IsNullOrWhiteSpace(queueName))
             {
@@ -45,6 +48,7 @@
 
             this.processor = processor;
             this.queueName = queueName;
+            this.seconds = 0 > seconds ? 15 : seconds;
         }
         #endregion
 
@@ -56,28 +60,33 @@
         /// <returns>Task</returns>
         protected override async Task RunAsync(CancellationToken cancellationToken)
         {
-            if (!cancellationToken.IsCancellationRequested)
+            try
             {
-                var queue = await this.StateManager.GetOrAddAsync<IReliableQueue<T>>(this.queueName);
-
-                using (var tx = this.StateManager.CreateTransaction())
+                while (!cancellationToken.IsCancellationRequested)
                 {
-                    var message = await queue.TryDequeueAsync(tx);
+                    var queue = await this.StateManager.GetOrAddAsync<IReliableQueue<T>>(this.queueName);
 
-                    if (message.HasValue)
+                    using (var tx = this.StateManager.CreateTransaction())
                     {
-                        var success = await this.processor.Process(message.Value);
+                        var message = await queue.TryDequeueAsync(tx);
 
-                        if (success)
+                        if (message.HasValue)
                         {
-                            await tx.CommitAsync();
+                            var success = await this.processor.Process(message.Value);
+
+                            if (success)
+                            {
+                                await tx.CommitAsync();
+                            }
                         }
                     }
+
+                    await Task.Delay(TimeSpan.FromSeconds(this.seconds), cancellationToken);
                 }
             }
-            else
+            catch (TaskCanceledException ex)
             {
-                Trace.TraceInformation("Dequeue not run, cancelation called.");
+                Trace.TraceError("Task Canceled Exception, can be normal: {0}", ex);
             }
         }
         #endregion
