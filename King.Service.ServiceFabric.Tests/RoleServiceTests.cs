@@ -87,7 +87,7 @@
 
             var ct = new CancellationTokenSource();
 
-            using (var t = new Timer(new TimerCallback((object obj) => { ct.Cancel(); }), null, 2, Timeout.Infinite))
+            using (var t = new Timer(new TimerCallback((object obj) => { ct.Cancel(); }), null, 3, Timeout.Infinite))
             {
 
                 await rs.RunTest(ct.Token);
