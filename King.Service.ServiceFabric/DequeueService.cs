@@ -1,17 +1,17 @@
 ﻿namespace King.Service.ServiceFabric
 {
+    using Azure.Data;
+    using Microsoft.ServiceFabric.Data.Collections;
+    using Microsoft.ServiceFabric.Services.Runtime;
     using System;
     using System.Diagnostics;
     using System.Threading;
     using System.Threading.Tasks;
-    using Azure.Data;
-    using Microsoft.ServiceFabric.Data.Collections;
-    using Microsoft.ServiceFabric.Services.Runtime;
 
     /// <summary>
     /// Dequeue Service
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">Dequeue Type</typeparam>
     public class DequeueService<T> : StatefulService
     {
         #region Members
@@ -25,6 +25,9 @@
         /// </summary>
         protected readonly string queueName;
 
+        /// <summary>
+        /// Check every
+        /// </summary>
         protected readonly int seconds = 15;
         #endregion
 
@@ -81,7 +84,7 @@
                         }
                         else
                         {
-                            Trace.TraceInformation("Message doesn't have value.");
+                            Trace.TraceInformation("Message does not contain value.");
                         }
                     }
 
@@ -90,7 +93,7 @@
             }
             catch (TaskCanceledException ex)
             {
-                Trace.TraceError("Task Canceled Exception, can be normal: {0}", ex);
+                Trace.TraceError("Task Canceled Exception (might be normal): '{0}'.", ex);
             }
         }
         #endregion
