@@ -79,6 +79,10 @@
                                 await tx.CommitAsync();
                             }
                         }
+                        else
+                        {
+                            Trace.TraceInformation("Message doesn't have value.");
+                        }
                     }
 
                     await Task.Delay(TimeSpan.FromSeconds(this.seconds), cancellationToken);
