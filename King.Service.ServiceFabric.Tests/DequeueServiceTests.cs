@@ -1,14 +1,15 @@
 ﻿namespace King.Service.ServiceFabric.Tests
 {
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Azure.Data;
     using Microsoft.ServiceFabric.Data;
     using Microsoft.ServiceFabric.Data.Collections;
     using Microsoft.ServiceFabric.Services.Runtime;
     using NSubstitute;
     using NUnit.Framework;
-    using System;
-    using System.Threading;
-    using System.Threading.Tasks;
+
     [TestFixture]
     public class DequeueServiceTests
     {
