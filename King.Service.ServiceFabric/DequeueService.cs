@@ -64,28 +64,35 @@
             {
                 while (!cancellationToken.IsCancellationRequested)
                 {
-                    var queue = await this.StateManager.GetOrAddAsync<IReliableQueue<T>>(this.queueName);
-
-                    using (var tx = this.StateManager.CreateTransaction())
+                    try
                     {
-                        var message = await queue.TryDequeueAsync(tx);
+                        var queue = await this.StateManager.GetOrAddAsync<IReliableQueue<T>>(this.queueName);
 
-                        if (message.HasValue)
+                        using (var tx = this.StateManager.CreateTransaction())
                         {
-                            var success = await this.processor.Process(message.Value);
+                            var message = await queue.TryDequeueAsync(tx);
 
-                            if (success)
+                            if (message.HasValue)
                             {
-                                await tx.CommitAsync();
+                                var success = await this.processor.Process(message.Value);
+
+                                if (success)
+                                {
+                                    await tx.CommitAsync();
+                                }
+                            }
+                            else
+                            {
+                                Trace.TraceInformation("Message doesn't have value.");
                             }
                         }
-                        else
-                        {
-                            Trace.TraceInformation("Message doesn't have value.");
-                        }
-                    }
 
-                    await Task.Delay(TimeSpan.FromSeconds(this.seconds), cancellationToken);
+                        await Task.Delay(TimeSpan.FromSeconds(this.seconds), cancellationToken);
+                    }
+                    catch (Exception ex)
+                    {
+                        Trace.TraceError("Processing exeption: {0}", ex);
+                    }
                 }
             }
             catch (TaskCanceledException ex)
