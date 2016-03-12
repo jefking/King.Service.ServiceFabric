@@ -25,6 +25,9 @@
         /// </summary>
         protected readonly string queueName;
 
+        /// <summary>
+        /// Timing
+        /// </summary>
         protected readonly int seconds = 15;
         #endregion
 
