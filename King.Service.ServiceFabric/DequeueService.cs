@@ -11,7 +11,7 @@
     /// <summary>
     /// Dequeue Service
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">Dequeue Type</typeparam>
     public class DequeueService<T> : StatefulService
     {
         #region Members
@@ -86,7 +86,7 @@
                             }
                             else
                             {
-                                Trace.TraceInformation("Message doesn't have value.");
+                                Trace.TraceInformation("Message does not contain value.");
                             }
                         }
 
@@ -100,7 +100,7 @@
             }
             catch (TaskCanceledException ex)
             {
-                Trace.TraceError("Task Canceled Exception, can be normal: {0}", ex);
+                Trace.TraceError("Task Canceled Exception (might be normal): '{0}'.", ex);
             }
         }
         #endregion
