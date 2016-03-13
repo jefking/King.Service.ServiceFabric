@@ -83,13 +83,18 @@
                                 {
                                     await tx.CommitAsync();
                                 }
+                                else
+                                {
+                                    Trace.TraceInformation("Message was not processed successfully.");
+                                }
                             }
                             else
                             {
-                                Trace.TraceInformation("Message does not contain value.");
+                                Trace.TraceInformation("Message does not contain a value.");
                             }
                         }
 
+                        //Move to dynamic timings
                         await Task.Delay(TimeSpan.FromSeconds(this.seconds), cancellationToken);
                     }
                     catch (Exception ex)
