@@ -43,21 +43,34 @@
         /// <returns>Task</returns>
         protected override async Task RunAsync(CancellationToken cancellationToken)
         {
-            this.run.Start();
-
-            try
+            if (this.run.Start())
             {
-                while (!cancellationToken.IsCancellationRequested)
+
+                try
                 {
-                    await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
+                    while (!cancellationToken.IsCancellationRequested)
+                    {
+                        await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
+                    }
+                }
+                catch (TaskCanceledException ex)
+                {
+                    Trace.TraceError("Task Canceled Exception, can be normal: {0}", ex);
+                }
+
+                if (this.run.Stop())
+                {
+                    Trace.TraceError("Task stopped successfully.");
+                }
+                else
+                {
+                    Trace.TraceError("Task failed to stop: did not complete stop process successfully.");
                 }
             }
-            catch (TaskCanceledException ex)
+            else
             {
-                Trace.TraceError("Task Canceled Exception, can be normal: {0}", ex);
+                Trace.TraceError("Task failed to start: did not complete start process successfully.");
             }
-
-            this.run.Stop();
         }
         #endregion
     }
