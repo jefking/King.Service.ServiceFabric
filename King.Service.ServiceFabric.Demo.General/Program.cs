@@ -15,7 +15,7 @@ namespace King.Service.ServiceFabric.Demo.General
             try
             {
                 // Creating a FabricRuntime connects this host process to the Service Fabric runtime.
-                using (FabricRuntime fabricRuntime = FabricRuntime.Create())
+                using (var fabricRuntime = FabricRuntime.Create())
                 {
                     // The ServiceManifest.XML file defines one or more service type names.
                     // RegisterServiceType maps a service type name to a .NET class.
