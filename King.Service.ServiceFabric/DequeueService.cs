@@ -85,7 +85,7 @@
                                 }
                                 else
                                 {
-                                    Trace.TraceInformation("Message was not processed successfully.");
+                                    Trace.TraceWarning("Message was not processed successfully.");
                                 }
                             }
                             else
@@ -94,7 +94,6 @@
                             }
                         }
 
-                        //Move to dynamic timings
                         await Task.Delay(TimeSpan.FromSeconds(this.seconds), cancellationToken);
                     }
                     catch (Exception ex)
