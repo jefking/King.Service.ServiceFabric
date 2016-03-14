@@ -1,14 +1,14 @@
 ﻿namespace King.Service.ServiceFabric.Tests
 {
-    using System;
-    using System.Threading;
-    using System.Threading.Tasks;
     using Azure.Data;
     using Microsoft.ServiceFabric.Data;
     using Microsoft.ServiceFabric.Data.Collections;
     using Microsoft.ServiceFabric.Services.Runtime;
     using NSubstitute;
     using NUnit.Framework;
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     [TestFixture]
     public class DequeueServiceTests
@@ -69,7 +69,13 @@
             var processor = Substitute.For<IProcessor<object>>();
 
             var ds = new FakeDequeueService(queueName, processor, state);
-            await ds.RunTest(CancellationToken.None);
+
+            var ct = new CancellationTokenSource();
+
+            using (var t = new Timer(new TimerCallback((object obj) => { ct.Cancel(); }), null, 3, Timeout.Infinite))
+            {
+                await ds.RunTest(ct.Token);
+            }
 
             await state.Received().GetOrAddAsync<IReliableQueue<object>>(queueName);
             state.Received().CreateTransaction();
@@ -96,7 +102,13 @@
             processor.Process(data).Returns(false);
 
             var ds = new FakeDequeueService(queueName, processor, state);
-            await ds.RunTest(CancellationToken.None);
+
+            var ct = new CancellationTokenSource();
+
+            using (var t = new Timer(new TimerCallback((object obj) => { ct.Cancel(); }), null, 3, Timeout.Infinite))
+            {
+                await ds.RunTest(ct.Token);
+            }
 
             await state.Received().GetOrAddAsync<IReliableQueue<object>>(queueName);
             state.Received().CreateTransaction();
@@ -122,7 +134,13 @@
             processor.Process(data).Returns(true);
 
             var ds = new FakeDequeueService(queueName, processor, state);
-            await ds.RunTest(CancellationToken.None);
+
+            var ct = new CancellationTokenSource();
+
+            using (var t = new Timer(new TimerCallback((object obj) => { ct.Cancel(); }), null, 3, Timeout.Infinite))
+            {
+                await ds.RunTest(ct.Token);
+            }
 
             await state.Received().GetOrAddAsync<IReliableQueue<object>>(queueName);
             state.Received().CreateTransaction();

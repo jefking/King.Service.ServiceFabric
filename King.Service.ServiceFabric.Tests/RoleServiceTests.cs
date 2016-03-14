@@ -1,11 +1,11 @@
 ﻿namespace King.Service.ServiceFabric.Tests
 {
-    using System;
-    using System.Threading;
-    using System.Threading.Tasks;
     using Microsoft.ServiceFabric.Services.Runtime;
     using NSubstitute;
     using NUnit.Framework;
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     [TestFixture]
     public class RoleServiceTests
@@ -89,7 +89,6 @@
 
             using (var t = new Timer(new TimerCallback((object obj) => { ct.Cancel(); }), null, 3, Timeout.Infinite))
             {
-
                 await rs.RunTest(ct.Token);
 
                 manager.Received().OnStart(config);
