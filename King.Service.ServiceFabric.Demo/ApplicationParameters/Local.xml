@@ -6,6 +6,5 @@
       <Parameter Name="Dequeue_TargetReplicaSetSize" Value="3" />
       <Parameter Name="Task_InstanceCount" Value="1" />
       <Parameter Name="Factory_InstanceCount" Value="1" />
-      <Parameter Name="General_InstanceCount" Value="1" />
    </Parameters>
 </Application>

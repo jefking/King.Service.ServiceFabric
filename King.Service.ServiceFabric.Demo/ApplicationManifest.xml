@@ -6,7 +6,6 @@
       <Parameter Name="Dequeue_TargetReplicaSetSize" DefaultValue="3" />
       <Parameter Name="Task_InstanceCount" DefaultValue="-1" />
       <Parameter Name="Factory_InstanceCount" DefaultValue="-1" />
-      <Parameter Name="General_InstanceCount" DefaultValue="-1" />
    </Parameters>
    <ServiceManifestImport>
       <ServiceManifestRef ServiceManifestName="King.Service.ServiceFabric.Demo.DequeuePkg" ServiceManifestVersion="1.0.0" />
@@ -18,10 +17,6 @@
    </ServiceManifestImport>
    <ServiceManifestImport>
       <ServiceManifestRef ServiceManifestName="King.Service.ServiceFabric.Demo.FactoryPkg" ServiceManifestVersion="1.0.0" />
-      <ConfigOverrides />
-   </ServiceManifestImport>
-   <ServiceManifestImport>
-      <ServiceManifestRef ServiceManifestName="King.Service.ServiceFabric.Demo.GeneralPkg" ServiceManifestVersion="1.0.0" />
       <ConfigOverrides />
    </ServiceManifestImport>
    <DefaultServices>
@@ -37,11 +32,6 @@
       </Service>
       <Service Name="Factory">
          <StatelessService ServiceTypeName="FactoryType" InstanceCount="[Factory_InstanceCount]">
-            <SingletonPartition />
-         </StatelessService>
-      </Service>
-      <Service Name="General">
-         <StatelessService ServiceTypeName="GeneralType" InstanceCount="[General_InstanceCount]">
             <SingletonPartition />
          </StatelessService>
       </Service>
