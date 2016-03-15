@@ -1,14 +1,11 @@
-﻿using Microsoft.ServiceFabric.Services.Runtime;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Fabric;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace King.Service.ServiceFabric.Demo.Task
+﻿namespace King.Service.ServiceFabric.Demo.Task
 {
+    using System;
+    using System.Diagnostics.Tracing;
+    using System.Fabric;
+    using System.Threading.Tasks;
+    using Microsoft.ServiceFabric.Services.Runtime;
+
     [EventSource(Name = "MyCompany-King.Service.ServiceFabric.Demo-Task")]
     internal sealed class ServiceEventSource : EventSource
     {
@@ -18,7 +15,7 @@ namespace King.Service.ServiceFabric.Demo.Task
         {
             // A workaround for the problem where ETW activities do not get tracked until Tasks infrastructure is initialized.
             // This problem will be fixed in .NET Framework 4.6.2.
-            Service.Run(() => { }).Wait();
+            Task.Run(() => { }).Wait();
         }
 
         // Instance constructor is private to enforce singleton semantics
