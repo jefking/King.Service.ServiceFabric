@@ -15,15 +15,15 @@ namespace King.Service.ServiceFabric.Demo.Factory
             try
             {
                 // Creating a FabricRuntime connects this host process to the Service Fabric runtime.
-                using (FabricRuntime fabricRuntime = FabricRuntime.Create())
+                using (var fabricRuntime = FabricRuntime.Create())
                 {
                     // The ServiceManifest.XML file defines one or more service type names.
                     // RegisterServiceType maps a service type name to a .NET class.
                     // When Service Fabric creates an instance of this service type,
                     // an instance of the class is created in this host process.
-                    fabricRuntime.RegisterServiceType("FactoryType", typeof(Factory));
+                    fabricRuntime.RegisterServiceType("GeneralType", typeof(General));
 
-                    ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(Factory).Name);
+                    ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(General).Name);
 
                     Thread.Sleep(Timeout.Infinite);  // Prevents this host process from terminating so services keeps running.
                 }

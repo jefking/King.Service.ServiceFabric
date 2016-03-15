@@ -1,7 +1,7 @@
-﻿namespace King.Service.ServiceFabric.Demo.General
+﻿namespace King.Service.ServiceFabric.Demo.Factory
 {
-    using King.Service;
     using System.Diagnostics;
+    using King.Service;
 
     public class Recurring : RecurringTask
     {

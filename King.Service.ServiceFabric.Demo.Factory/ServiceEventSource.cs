@@ -1,14 +1,11 @@
-﻿using Microsoft.ServiceFabric.Services.Runtime;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Fabric;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace King.Service.ServiceFabric.Demo.Factory
+﻿namespace King.Service.ServiceFabric.Demo.Factory
 {
+    using System;
+    using System.Diagnostics.Tracing;
+    using System.Fabric;
+    using System.Threading.Tasks;
+    using Microsoft.ServiceFabric.Services.Runtime;
+
     [EventSource(Name = "MyCompany-King.Service.ServiceFabric.Demo-Factory")]
     internal sealed class ServiceEventSource : EventSource
     {

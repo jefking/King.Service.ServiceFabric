@@ -1,4 +1,4 @@
-﻿namespace King.Service.ServiceFabric.Demo.General
+﻿namespace King.Service.ServiceFabric.Demo.Factory
 {
     public class Configuration
     {
