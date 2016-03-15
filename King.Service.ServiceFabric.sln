@@ -22,6 +22,12 @@ Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "King.Service.ServiceFabric.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "King.Service.ServiceFabric.Demo.General", "King.Service.ServiceFabric.Demo.General\King.Service.ServiceFabric.Demo.General.csproj", "{ECE79897-3AD9-40EC-8561-65C9DB2E9F9A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "King.Service.ServiceFabric.Demo.Factory", "King.Service.ServiceFabric.Demo.Factory\King.Service.ServiceFabric.Demo.Factory.csproj", "{1F097FF0-C707-4BD1-BF32-175BC7E8DB18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "King.Service.ServiceFabric.Demo.Task", "King.Service.ServiceFabric.Demo.Task\King.Service.ServiceFabric.Demo.Task.csproj", "{9418845D-68BB-4330-A361-44F7D379D4CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "King.Service.ServiceFabric.Demo.Dequeue", "King.Service.ServiceFabric.Demo.Dequeue\King.Service.ServiceFabric.Demo.Dequeue.csproj", "{7A26F15B-BC63-431C-ADA6-3D3A082EF51D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,6 +66,24 @@ Global
 		{ECE79897-3AD9-40EC-8561-65C9DB2E9F9A}.Release|Any CPU.ActiveCfg = Release|x64
 		{ECE79897-3AD9-40EC-8561-65C9DB2E9F9A}.Release|x64.ActiveCfg = Release|x64
 		{ECE79897-3AD9-40EC-8561-65C9DB2E9F9A}.Release|x64.Build.0 = Release|x64
+		{1F097FF0-C707-4BD1-BF32-175BC7E8DB18}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{1F097FF0-C707-4BD1-BF32-175BC7E8DB18}.Debug|x64.ActiveCfg = Debug|x64
+		{1F097FF0-C707-4BD1-BF32-175BC7E8DB18}.Debug|x64.Build.0 = Debug|x64
+		{1F097FF0-C707-4BD1-BF32-175BC7E8DB18}.Release|Any CPU.ActiveCfg = Release|x64
+		{1F097FF0-C707-4BD1-BF32-175BC7E8DB18}.Release|x64.ActiveCfg = Release|x64
+		{1F097FF0-C707-4BD1-BF32-175BC7E8DB18}.Release|x64.Build.0 = Release|x64
+		{9418845D-68BB-4330-A361-44F7D379D4CA}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{9418845D-68BB-4330-A361-44F7D379D4CA}.Debug|x64.ActiveCfg = Debug|x64
+		{9418845D-68BB-4330-A361-44F7D379D4CA}.Debug|x64.Build.0 = Debug|x64
+		{9418845D-68BB-4330-A361-44F7D379D4CA}.Release|Any CPU.ActiveCfg = Release|x64
+		{9418845D-68BB-4330-A361-44F7D379D4CA}.Release|x64.ActiveCfg = Release|x64
+		{9418845D-68BB-4330-A361-44F7D379D4CA}.Release|x64.Build.0 = Release|x64
+		{7A26F15B-BC63-431C-ADA6-3D3A082EF51D}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{7A26F15B-BC63-431C-ADA6-3D3A082EF51D}.Debug|x64.ActiveCfg = Debug|x64
+		{7A26F15B-BC63-431C-ADA6-3D3A082EF51D}.Debug|x64.Build.0 = Debug|x64
+		{7A26F15B-BC63-431C-ADA6-3D3A082EF51D}.Release|Any CPU.ActiveCfg = Release|x64
+		{7A26F15B-BC63-431C-ADA6-3D3A082EF51D}.Release|x64.ActiveCfg = Release|x64
+		{7A26F15B-BC63-431C-ADA6-3D3A082EF51D}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,5 +92,8 @@ Global
 		{D63E1201-DCB0-46FA-B872-9DF4734055E3} = {4B6B25B9-453A-4E32-B5D5-11B8320349B2}
 		{9E8B91CD-F5C8-40D9-A7B7-2F26A68F735A} = {A09EB278-0EFB-434E-80AB-7C44E091F08E}
 		{ECE79897-3AD9-40EC-8561-65C9DB2E9F9A} = {A09EB278-0EFB-434E-80AB-7C44E091F08E}
+		{1F097FF0-C707-4BD1-BF32-175BC7E8DB18} = {A09EB278-0EFB-434E-80AB-7C44E091F08E}
+		{9418845D-68BB-4330-A361-44F7D379D4CA} = {A09EB278-0EFB-434E-80AB-7C44E091F08E}
+		{7A26F15B-BC63-431C-ADA6-3D3A082EF51D} = {A09EB278-0EFB-434E-80AB-7C44E091F08E}
 	EndGlobalSection
 EndGlobal

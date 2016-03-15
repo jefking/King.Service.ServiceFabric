@@ -14,7 +14,10 @@
     <None Include="Scripts\Deploy-FabricApplication.ps1" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\King.Service.ServiceFabric.Demo.Dequeue\King.Service.ServiceFabric.Demo.Dequeue.csproj" />
+    <ProjectReference Include="..\King.Service.ServiceFabric.Demo.Factory\King.Service.ServiceFabric.Demo.Factory.csproj" />
     <ProjectReference Include="..\King.Service.ServiceFabric.Demo.General\King.Service.ServiceFabric.Demo.General.csproj" />
+    <ProjectReference Include="..\King.Service.ServiceFabric.Demo.Task\King.Service.ServiceFabric.Demo.Task.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Service Fabric Tools\Microsoft.VisualStudio.Azure.Fabric.ApplicationProject.targets" />
 </Project>
