@@ -21,7 +21,7 @@ namespace King.Service.ServiceFabric.Demo.Dequeue
                     // RegisterServiceType maps a service type name to a .NET class.
                     // When Service Fabric creates an instance of this service type,
                     // an instance of the class is created in this host process.
-                    fabricRuntime.RegisterServiceType("DequeueType", typeof(Service));
+                    fabricRuntime.RegisterServiceType("ServiceType", typeof(Service));
 
                     ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(Service).Name);
 
