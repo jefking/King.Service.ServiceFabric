@@ -18,7 +18,7 @@ namespace King.Service.ServiceFabric.Demo.Task
         {
             // A workaround for the problem where ETW activities do not get tracked until Tasks infrastructure is initialized.
             // This problem will be fixed in .NET Framework 4.6.2.
-            Task.Run(() => { }).Wait();
+            Service.Run(() => { }).Wait();
         }
 
         // Instance constructor is private to enforce singleton semantics

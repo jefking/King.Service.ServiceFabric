@@ -3,9 +3,9 @@
     /// <summary>
     /// The FabricRuntime creates an instance of this class for each service type instance. 
     /// </summary>
-    internal sealed class General : RoleService<Configuration>
+    internal sealed class Service : RoleService<Configuration>
     {
-        public General()
+        public Service()
             : base(new RoleTaskManager<Configuration>(new TaskFactory()))
         {
         }
