@@ -5,6 +5,9 @@
     /// </summary>
     internal sealed class Service : DequeueService<Model>
     {
-        public Service() : base("cool", new ModelAction()) { }
+        public Service()
+            : base("demo", new ModelAction())
+        {
+        }
     }
 }
