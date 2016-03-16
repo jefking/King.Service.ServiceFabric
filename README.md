@@ -1,6 +1,8 @@
 ### Task scheduling for Azure and Windows Servers: Service Fabric.
-+ Initialize: Queues
-+ Enqueue and Dequeue
++ Run Tasks
++ Run Task Factories
++ Dequeue Task
++ Lots more coming!
 + Plugs into [King.Service](https://github.com/jefking/King.Service)
 
 ### [NuGet](https://www.nuget.org/packages/King.Service.ServiceFabric)
