@@ -108,6 +108,7 @@
     <Compile Include="DequeueService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleService.cs" />
+    <Compile Include="RunTime.cs" />
     <Compile Include="TaskService.cs" />
   </ItemGroup>
   <ItemGroup>
