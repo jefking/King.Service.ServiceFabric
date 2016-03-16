@@ -142,6 +142,7 @@
     <Compile Include="RoleServiceFake.cs" />
     <Compile Include="RoleServiceTests.cs" />
     <Compile Include="DequeueServiceTests.cs" />
+    <Compile Include="RunTimeTests.cs" />
     <Compile Include="TaskServiceFake.cs" />
     <Compile Include="TaskServiceTests.cs" />
   </ItemGroup>

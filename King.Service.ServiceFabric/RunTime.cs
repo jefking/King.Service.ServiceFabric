@@ -23,7 +23,7 @@
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="name">service type name</param>
+        /// <param name="name">Service Type name</param>
         public RunTime(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -39,7 +39,7 @@
         /// <summary>
         /// Run
         /// </summary>
-        public void Run()
+        public virtual void Run()
         {
             using (var fabricRuntime = FabricRuntime.Create())
             {
