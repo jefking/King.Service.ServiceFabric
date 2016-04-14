@@ -16,8 +16,8 @@
         <copyright>Jef King</copyright>
         <tags>King.Service.ServiceFabric Service Fabric ServiceFabric SF ASF Azure Queue Service Bus EventHub Event Hub service-bus scale Topic Topics PubSub Publisher Subscriber Event Time Sensitive time-sensitive auto-scale dynamic-scale dynamic Queuing Background Worker Work Data Processing Table Environment Initialize Task Tasks volume Dequeue Dequeuing run task service services tasks scheduling King.Service King.Azure</tags>
         <dependencies>
-          <dependency id="King.Service" />
-          <dependency id="Microsoft.ServiceFabric.Services" />
+          <dependency id="King.Service" version="1.12.6" />
+          <dependency id="Microsoft.ServiceFabric.Services" version="1.4.87-preview" />
         </dependencies>
         <frameworkAssemblies>
             <frameworkAssembly assemblyName="System" targetFramework="net45" />
