@@ -7,6 +7,7 @@
     using NSubstitute;
     using NUnit.Framework;
     using System.Fabric;
+
     [TestFixture]
     public class TaskServiceTests
     {
