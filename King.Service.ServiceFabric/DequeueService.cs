@@ -4,9 +4,10 @@
     using System.Diagnostics;
     using System.Threading;
     using System.Threading.Tasks;
-    using Azure.Data;
     using Microsoft.ServiceFabric.Data.Collections;
     using Microsoft.ServiceFabric.Services.Runtime;
+    using King.Azure.Data;
+    using System.Fabric;
 
     /// <summary>
     /// Dequeue Service
@@ -35,10 +36,12 @@
         /// <summary>
         /// Constructor
         /// </summary>
+        /// <param name="serviceContext"></param>
         /// <param name="queueName">Queue Name</param>
         /// <param name="processor">Processor</param>
         /// <param name="seconds">Check every</param>
-        public DequeueService(string queueName, IProcessor<T> processor, int seconds = 15)
+        public DequeueService(StatefulServiceContext serviceContext, string queueName, IProcessor<T> processor, int seconds = 15)
+            :base(serviceContext)
         {
             if (string.IsNullOrWhiteSpace(queueName))
             {

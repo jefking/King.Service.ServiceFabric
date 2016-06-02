@@ -5,7 +5,7 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.ServiceFabric.Services.Runtime;
-
+    using System.Fabric;
     /// <summary>
     /// Task Service
     /// </summary>
@@ -23,8 +23,10 @@
         /// <summary>
         /// Role Service Constructor
         /// </summary>
+        /// <param name="serviceContext">Service Context</param>
         /// <param name="run">Task Manager</param>
-        public TaskService(IRunnable run)
+        public TaskService(StatelessServiceContext serviceContext, IRunnable run)
+            :base(serviceContext)
         {
             if (null == run)
             {

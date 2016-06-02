@@ -1,12 +1,14 @@
 ﻿namespace King.Service.ServiceFabric.Tests
 {
+    using NSubstitute;
+    using System.Fabric;
     using System.Threading;
     using System.Threading.Tasks;
 
     public class RoleServiceFake<T> : RoleService<T>
     {
         public RoleServiceFake(IRoleTaskManager<T> taskManager, T config = default(T))
-            : base(taskManager, config)
+            : base(Substitute.ForPartsOf<StatelessServiceContext>(), taskManager, config)
         {
         }
 

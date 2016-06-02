@@ -6,28 +6,31 @@
     using Microsoft.ServiceFabric.Services.Runtime;
     using NSubstitute;
     using NUnit.Framework;
-
+    using System.Fabric;
     [TestFixture]
     public class TaskServiceTests
     {
         [Test]
         public void Constructor()
         {
+            var context = Substitute.ForPartsOf<StatelessServiceContext>();
             var run = Substitute.For<IRunnable>();
-            new TaskService(run);
+            new TaskService(context, run);
         }
 
         [Test]
         public void IsStatelessService()
         {
+            var context = Substitute.ForPartsOf<StatelessServiceContext>();
             var run = Substitute.For<IRunnable>();
-            Assert.IsNotNull(new TaskService(run) as StatelessService);
+            Assert.IsNotNull(new TaskService(context, run) as StatelessService);
         }
 
         [Test]
         public void ConstructorRunNull()
         {
-            Assert.That(() => new TaskService(null), Throws.TypeOf<ArgumentNullException>());
+            var context = Substitute.ForPartsOf<StatelessServiceContext>();
+            Assert.That(() => new TaskService(context, null), Throws.TypeOf<ArgumentNullException>());
         }
 
         [Test]

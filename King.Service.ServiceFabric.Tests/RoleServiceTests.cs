@@ -4,6 +4,7 @@
     using NSubstitute;
     using NUnit.Framework;
     using System;
+    using System.Fabric;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -13,35 +14,40 @@
         [Test]
         public void Constructor()
         {
+            var context = Substitute.ForPartsOf<StatelessServiceContext>();
             var manager = Substitute.For<IRoleTaskManager<object>>();
-            new RoleService<object>(manager);
+            new RoleService<object>(context, manager);
         }
 
         [Test]
         public void ConstructorWithConfig()
         {
+            var context = Substitute.ForPartsOf<StatelessServiceContext>();
             var manager = Substitute.For<IRoleTaskManager<object>>();
-            new RoleService<object>(manager, new object());
+            new RoleService<object>(context, manager, new object());
         }
 
         [Test]
         public void IsStatelessService()
         {
+            var context = Substitute.ForPartsOf<StatelessServiceContext>();
             var manager = Substitute.For<IRoleTaskManager<object>>();
-            Assert.IsNotNull(new RoleService<object>(manager) as StatelessService);
+            Assert.IsNotNull(new RoleService<object>(context, manager) as StatelessService);
         }
 
         [Test]
         public void ConstructorhNullConfig()
         {
+            var context = Substitute.ForPartsOf<StatelessServiceContext>();
             var manager = Substitute.For<IRoleTaskManager<object>>();
-            new RoleService<object>(manager, null);
+            new RoleService<object>(context, manager, null);
         }
 
         [Test]
         public void ConstructorManagerNull()
         {
-            Assert.That(() => new RoleService<object>(null), Throws.TypeOf<ArgumentNullException>());
+            var context = Substitute.ForPartsOf<StatelessServiceContext>();
+            Assert.That(() => new RoleService<object>(context, null), Throws.TypeOf<ArgumentNullException>());
         }
 
         [Test]

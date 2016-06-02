@@ -5,7 +5,7 @@
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.ServiceFabric.Services.Runtime;
-
+    using System.Fabric;
     /// <summary>
     /// Role Service
     /// </summary>
@@ -28,9 +28,11 @@
         /// <summary>
         /// Role Service Constructor
         /// </summary>
+        /// <param name="serviceContext">Service Context</param>
         /// <param name="taskManager">Task Manager</param>
         /// <param name="config">Configuration</param>
-        public RoleService(IRoleTaskManager<T> taskManager, T config = default(T))
+        public RoleService(StatelessServiceContext serviceContext, IRoleTaskManager<T> taskManager, T config = default(T))
+            :base(serviceContext)
         {
             if (null == taskManager)
             {
