@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
     using Microsoft.ServiceFabric.Services.Runtime;
     using System.Fabric;
+
     /// <summary>
     /// Role Service
     /// </summary>

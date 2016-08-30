@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{A09EB278-0EFB-434E-80AB-7C44E091F08E}"
 EndProject
@@ -13,10 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{4B6B25B9-453A-4E32-B5D5-11B8320349B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "King.Service.ServiceFabric", "King.Service.ServiceFabric\King.Service.ServiceFabric.csproj", "{E8FB7B7E-B404-4BF3-981F-2D7398D22059}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "King.Service.ServiceFabric.Tests", "King.Service.ServiceFabric.Tests\King.Service.ServiceFabric.Tests.csproj", "{D63E1201-DCB0-46FA-B872-9DF4734055E3}"
-EndProject
 Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "King.Service.ServiceFabric.Demo", "King.Service.ServiceFabric.Demo\King.Service.ServiceFabric.Demo.sfproj", "{9E8B91CD-F5C8-40D9-A7B7-2F26A68F735A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "King.Service.ServiceFabric.Demo.Factory", "King.Service.ServiceFabric.Demo.Factory\King.Service.ServiceFabric.Demo.Factory.csproj", "{1F097FF0-C707-4BD1-BF32-175BC7E8DB18}"
@@ -24,6 +20,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "King.Service.ServiceFabric.Demo.Task", "King.Service.ServiceFabric.Demo.Task\King.Service.ServiceFabric.Demo.Task.csproj", "{9418845D-68BB-4330-A361-44F7D379D4CA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "King.Service.ServiceFabric.Demo.Dequeue", "King.Service.ServiceFabric.Demo.Dequeue\King.Service.ServiceFabric.Demo.Dequeue.csproj", "{7A26F15B-BC63-431C-ADA6-3D3A082EF51D}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "King.Service.ServiceFabric", "King.Service.ServiceFabric\King.Service.ServiceFabric.xproj", "{A721AF8D-60D1-493D-A2D0-370F4A4B2E98}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "King.Service.ServiceFabric.Test", "King.Service.ServiceFabric.Test\King.Service.ServiceFabric.Test.xproj", "{12242677-18A4-419E-A306-D0AB0AF2C3BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,22 +33,6 @@ Global
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E8FB7B7E-B404-4BF3-981F-2D7398D22059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E8FB7B7E-B404-4BF3-981F-2D7398D22059}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E8FB7B7E-B404-4BF3-981F-2D7398D22059}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E8FB7B7E-B404-4BF3-981F-2D7398D22059}.Debug|x64.Build.0 = Debug|Any CPU
-		{E8FB7B7E-B404-4BF3-981F-2D7398D22059}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E8FB7B7E-B404-4BF3-981F-2D7398D22059}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E8FB7B7E-B404-4BF3-981F-2D7398D22059}.Release|x64.ActiveCfg = Release|Any CPU
-		{E8FB7B7E-B404-4BF3-981F-2D7398D22059}.Release|x64.Build.0 = Release|Any CPU
-		{D63E1201-DCB0-46FA-B872-9DF4734055E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D63E1201-DCB0-46FA-B872-9DF4734055E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D63E1201-DCB0-46FA-B872-9DF4734055E3}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{D63E1201-DCB0-46FA-B872-9DF4734055E3}.Debug|x64.Build.0 = Debug|Any CPU
-		{D63E1201-DCB0-46FA-B872-9DF4734055E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D63E1201-DCB0-46FA-B872-9DF4734055E3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D63E1201-DCB0-46FA-B872-9DF4734055E3}.Release|x64.ActiveCfg = Release|Any CPU
-		{D63E1201-DCB0-46FA-B872-9DF4734055E3}.Release|x64.Build.0 = Release|Any CPU
 		{9E8B91CD-F5C8-40D9-A7B7-2F26A68F735A}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{9E8B91CD-F5C8-40D9-A7B7-2F26A68F735A}.Debug|x64.ActiveCfg = Debug|x64
 		{9E8B91CD-F5C8-40D9-A7B7-2F26A68F735A}.Debug|x64.Build.0 = Debug|x64
@@ -75,15 +59,31 @@ Global
 		{7A26F15B-BC63-431C-ADA6-3D3A082EF51D}.Release|Any CPU.ActiveCfg = Release|x64
 		{7A26F15B-BC63-431C-ADA6-3D3A082EF51D}.Release|x64.ActiveCfg = Release|x64
 		{7A26F15B-BC63-431C-ADA6-3D3A082EF51D}.Release|x64.Build.0 = Release|x64
+		{A721AF8D-60D1-493D-A2D0-370F4A4B2E98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A721AF8D-60D1-493D-A2D0-370F4A4B2E98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A721AF8D-60D1-493D-A2D0-370F4A4B2E98}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A721AF8D-60D1-493D-A2D0-370F4A4B2E98}.Debug|x64.Build.0 = Debug|Any CPU
+		{A721AF8D-60D1-493D-A2D0-370F4A4B2E98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A721AF8D-60D1-493D-A2D0-370F4A4B2E98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A721AF8D-60D1-493D-A2D0-370F4A4B2E98}.Release|x64.ActiveCfg = Release|Any CPU
+		{A721AF8D-60D1-493D-A2D0-370F4A4B2E98}.Release|x64.Build.0 = Release|Any CPU
+		{12242677-18A4-419E-A306-D0AB0AF2C3BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12242677-18A4-419E-A306-D0AB0AF2C3BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12242677-18A4-419E-A306-D0AB0AF2C3BE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{12242677-18A4-419E-A306-D0AB0AF2C3BE}.Debug|x64.Build.0 = Debug|Any CPU
+		{12242677-18A4-419E-A306-D0AB0AF2C3BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12242677-18A4-419E-A306-D0AB0AF2C3BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12242677-18A4-419E-A306-D0AB0AF2C3BE}.Release|x64.ActiveCfg = Release|Any CPU
+		{12242677-18A4-419E-A306-D0AB0AF2C3BE}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D63E1201-DCB0-46FA-B872-9DF4734055E3} = {4B6B25B9-453A-4E32-B5D5-11B8320349B2}
 		{9E8B91CD-F5C8-40D9-A7B7-2F26A68F735A} = {A09EB278-0EFB-434E-80AB-7C44E091F08E}
 		{1F097FF0-C707-4BD1-BF32-175BC7E8DB18} = {A09EB278-0EFB-434E-80AB-7C44E091F08E}
 		{9418845D-68BB-4330-A361-44F7D379D4CA} = {A09EB278-0EFB-434E-80AB-7C44E091F08E}
 		{7A26F15B-BC63-431C-ADA6-3D3A082EF51D} = {A09EB278-0EFB-434E-80AB-7C44E091F08E}
+		{12242677-18A4-419E-A306-D0AB0AF2C3BE} = {4B6B25B9-453A-4E32-B5D5-11B8320349B2}
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,18 @@
+﻿{
+  "version": "1.0.1-*",
+  "description": "King.Service.ServiceFabric Test Console Application",
+
+  "buildOptions": {
+    "emitEntryPoint": true
+  },
+
+  "dependencies": {
+    "King.Service.ServiceFabric": "1.0.4-preview",
+    "NUnitLite": "3.4.1",
+    "NSubstitute": "2.0.0-rc"
+  },
+
+  "frameworks": {
+    "net462": {}
+  }
+}
