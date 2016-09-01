@@ -1,14 +1,12 @@
 ﻿namespace King.Service.ServiceFabric.Tests
 {
-    using NSubstitute;
-    using System.Fabric;
     using System.Threading;
     using System.Threading.Tasks;
 
     public class TaskServiceFake : TaskService
     {
         public TaskServiceFake(IRunnable run)
-            : base(Substitute.ForPartsOf<StatelessServiceContext>(), run)
+            : base(run)
         {
         }
 

@@ -1,13 +1,13 @@
 ﻿namespace King.Service.ServiceFabric.Tests
 {
     using King.Azure.Data;
-    using System.Fabric;
+    using Microsoft.ServiceFabric.Data;
     using System.Threading;
     using System.Threading.Tasks;
 
     public class FakeDequeueService : DequeueService<object>
     {
-        public FakeDequeueService(StatefulServiceContext context, string queueName, IProcessor<object> processor)
+        public FakeDequeueService(IReliableStateManager context, string queueName, IProcessor<object> processor)
             : base(context, queueName, processor)
         {
         }

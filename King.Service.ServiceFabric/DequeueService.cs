@@ -1,11 +1,10 @@
 ﻿namespace King.Service.ServiceFabric
 {
     using King.Azure.Data;
+    using Microsoft.ServiceFabric.Data;
     using Microsoft.ServiceFabric.Data.Collections;
-    using Microsoft.ServiceFabric.Services.Runtime;
     using System;
     using System.Diagnostics;
-    using System.Fabric;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -13,13 +12,18 @@
     /// Dequeue Service
     /// </summary>
     /// <typeparam name="T">Dequeue Type</typeparam>
-    public class DequeueService<T> : StatefulService
+    public class DequeueService<T>
     {
         #region Members
         /// <summary>
         /// Processor
         /// </summary>
         protected readonly IProcessor<T> processor;
+
+        /// <summary>
+        /// State
+        /// </summary>
+        protected readonly IReliableStateManager state;
 
         /// <summary>
         /// Queue Name
@@ -36,12 +40,11 @@
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="serviceContext"></param>
+        /// <param name="state">State</param>
         /// <param name="queueName">Queue Name</param>
         /// <param name="processor">Processor</param>
         /// <param name="seconds">Check every</param>
-        public DequeueService(StatefulServiceContext serviceContext, string queueName, IProcessor<T> processor, int seconds = 15)
-            :base(serviceContext)
+        public DequeueService(IReliableStateManager state, string queueName, IProcessor<T> processor, int seconds = 15)
         {
             if (string.IsNullOrWhiteSpace(queueName))
             {
@@ -52,6 +55,7 @@
                 throw new ArgumentNullException("processor");
             }
 
+            this.state = state;
             this.processor = processor;
             this.queueName = queueName;
             this.seconds = 0 > seconds ? 15 : seconds;
@@ -64,7 +68,7 @@
         /// </summary>
         /// <param name="cancellationToken">Cancellation Token</param>
         /// <returns>Task</returns>
-        protected override async Task RunAsync(CancellationToken cancellationToken)
+        protected async Task RunAsync(CancellationToken cancellationToken)
         {
             try
             {
@@ -72,9 +76,9 @@
                 {
                     try
                     {
-                        var queue = await this.StateManager.GetOrAddAsync<IReliableQueue<T>>(this.queueName);
+                        var queue = await this.state.GetOrAddAsync<IReliableQueue<T>>(this.queueName);
 
-                        using (var tx = this.StateManager.CreateTransaction())
+                        using (var tx = this.state.CreateTransaction())
                         {
                             var message = await queue.TryDequeueAsync(tx);
 

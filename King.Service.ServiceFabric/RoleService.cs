@@ -11,7 +11,7 @@
     /// Role Service
     /// </summary>
     /// <typeparam name="T">Configuration Type</typeparam>
-    public class RoleService<T> : StatelessService
+    public class RoleService<T>
     {
         #region Members
         /// <summary>
@@ -32,8 +32,7 @@
         /// <param name="serviceContext">Service Context</param>
         /// <param name="taskManager">Task Manager</param>
         /// <param name="config">Configuration</param>
-        public RoleService(StatelessServiceContext serviceContext, IRoleTaskManager<T> taskManager, T config = default(T))
-            :base(serviceContext)
+        public RoleService(IRoleTaskManager<T> taskManager, T config = default(T))
         {
             if (null == taskManager)
             {
@@ -51,7 +50,7 @@
         /// </summary>
         /// <param name="cancellationToken">Cancellation Token</param>
         /// <returns>Task</returns>
-        protected override async Task RunAsync(CancellationToken cancellationToken)
+        protected async Task RunAsync(CancellationToken cancellationToken)
         {
             if (this.taskManager.OnStart(this.configuration))
             {

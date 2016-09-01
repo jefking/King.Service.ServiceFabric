@@ -17,32 +17,24 @@
         [Test]
         public void Constructor()
         {
-            var context = Substitute.ForPartsOf<StatefulServiceContext>();
             var processor = Substitute.For<IProcessor<object>>();
-            new DequeueService<object>(context, Guid.NewGuid().ToString(), processor);
-        }
-
-        [Test]
-        public void IsStatelessService()
-        {
-            var context = Substitute.ForPartsOf<StatefulServiceContext>();
-            var processor = Substitute.For<IProcessor<object>>();
-            Assert.IsNotNull(new DequeueService<object>(context, Guid.NewGuid().ToString(), processor) as StatefulService);
+            var state = Substitute.For<IReliableStateManager>();
+            new DequeueService<object>(state, Guid.NewGuid().ToString(), processor);
         }
 
         [Test]
         public void ConstructorQueueNameNull()
         {
-            var context = Substitute.ForPartsOf<StatefulServiceContext>();
             var processor = Substitute.For<IProcessor<object>>();
-            Assert.That(() => new DequeueService<object>(context, null, processor), Throws.TypeOf<ArgumentException>());
+            var state = Substitute.For<IReliableStateManager>();
+            Assert.That(() => new DequeueService<object>(state, null, processor), Throws.TypeOf<ArgumentException>());
         }
 
         [Test]
         public void ConstructorProcessorNull()
         {
-            var context = Substitute.ForPartsOf<StatefulServiceContext>();
-            Assert.That(() => new DequeueService<object>(context, Guid.NewGuid().ToString(), null), Throws.TypeOf<ArgumentNullException>());
+            var state = Substitute.For<IReliableStateManager>();
+            Assert.That(() => new DequeueService<object>(state, Guid.NewGuid().ToString(), null), Throws.TypeOf<ArgumentNullException>());
         }
 
         [Test]
@@ -51,7 +43,8 @@
             var context = Substitute.ForPartsOf<StatefulServiceContext>();
             var queueName = Guid.NewGuid().ToString();
             var processor = Substitute.For<IProcessor<object>>();
-            var ds = new FakeDequeueService(context, queueName, processor);
+            var state = Substitute.For<IReliableStateManager>();
+            var ds = new FakeDequeueService(state, queueName, processor);
             var token = new CancellationToken(true);
             await ds.RunTest(token);
 
@@ -63,7 +56,7 @@
         [Test]
         public async Task RunAsyncWithMessage()
         {
-            var context = Substitute.ForPartsOf<StatefulServiceContext>();
+            var state = Substitute.For<IReliableStateManager>();
             var queueName = Guid.NewGuid().ToString();
             var queue = Substitute.For<IReliableQueue<object>>();
             var msg = new ConditionalValue<object>(false, null);
@@ -74,7 +67,7 @@
             queue.TryDequeueAsync(tx).Returns(msg);
             var processor = Substitute.For<IProcessor<object>>();
 
-            var ds = new FakeDequeueService(context, queueName, processor);
+            var ds = new FakeDequeueService(state, queueName, processor);
 
             var ct = new CancellationTokenSource();
 
@@ -95,7 +88,7 @@
         [Test]
         public async Task RunAsyncProcessNoSuccess()
         {
-            var context = Substitute.ForPartsOf<StatefulServiceContext>();
+            var state = Substitute.For<IReliableStateManager>();
             var queueName = Guid.NewGuid().ToString();
             var queue = Substitute.For<IReliableQueue<object>>();
             var data = new object();
@@ -108,7 +101,7 @@
             var processor = Substitute.For<IProcessor<object>>();
             processor.Process(data).Returns(false);
 
-            var ds = new FakeDequeueService(context, queueName, processor);
+            var ds = new FakeDequeueService(state, queueName, processor);
 
             var ct = new CancellationTokenSource();
 
@@ -129,7 +122,7 @@
         [Test]
         public async Task RunAsync()
         {
-            var context = Substitute.ForPartsOf<StatefulServiceContext>();
+            var state = Substitute.For<IReliableStateManager>();
             var queueName = Guid.NewGuid().ToString();
             var queue = Substitute.For<IReliableQueue<object>>();
             var data = new object();
@@ -142,7 +135,7 @@
             var processor = Substitute.For<IProcessor<object>>();
             processor.Process(data).Returns(true);
 
-            var ds = new FakeDequeueService(context, queueName, processor);
+            var ds = new FakeDequeueService(state, queueName, processor);
 
             var ct = new CancellationTokenSource();
 

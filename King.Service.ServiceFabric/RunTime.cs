@@ -17,8 +17,7 @@
         /// </summary>
         protected readonly string serviceTypeName;
         #endregion
-
-
+        
         #region Constructors
         /// <summary>
         /// Constructor

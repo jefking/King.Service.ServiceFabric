@@ -4,14 +4,12 @@
     using System.Diagnostics;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.ServiceFabric.Services.Runtime;
-    using System.Fabric;
 
     /// <summary>
     /// Task Service
     /// </summary>
     /// <typeparam name="T">Task</typeparam>
-    public class TaskService : StatelessService
+    public class TaskService
     {
         #region Members
         /// <summary>
@@ -24,10 +22,8 @@
         /// <summary>
         /// Role Service Constructor
         /// </summary>
-        /// <param name="serviceContext">Service Context</param>
         /// <param name="run">Task Manager</param>
-        public TaskService(StatelessServiceContext serviceContext, IRunnable run)
-            :base(serviceContext)
+        public TaskService(IRunnable run)
         {
             if (null == run)
             {
@@ -44,7 +40,7 @@
         /// </summary>
         /// <param name="cancellationToken">Cancellation Token</param>
         /// <returns>Task</returns>
-        protected override async Task RunAsync(CancellationToken cancellationToken)
+        protected async Task RunAsync(CancellationToken cancellationToken)
         {
             if (this.run.Start())
             {

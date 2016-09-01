@@ -14,40 +14,28 @@
         [Test]
         public void Constructor()
         {
-            var context = Substitute.ForPartsOf<StatelessServiceContext>();
             var manager = Substitute.For<IRoleTaskManager<object>>();
-            new RoleService<object>(context, manager);
+            new RoleService<object>(manager);
         }
 
         [Test]
         public void ConstructorWithConfig()
         {
-            var context = Substitute.ForPartsOf<StatelessServiceContext>();
             var manager = Substitute.For<IRoleTaskManager<object>>();
-            new RoleService<object>(context, manager, new object());
-        }
-
-        [Test]
-        public void IsStatelessService()
-        {
-            var context = Substitute.ForPartsOf<StatelessServiceContext>();
-            var manager = Substitute.For<IRoleTaskManager<object>>();
-            Assert.IsNotNull(new RoleService<object>(context, manager) as StatelessService);
+            new RoleService<object>(manager, new object());
         }
 
         [Test]
         public void ConstructorhNullConfig()
         {
-            var context = Substitute.ForPartsOf<StatelessServiceContext>();
             var manager = Substitute.For<IRoleTaskManager<object>>();
-            new RoleService<object>(context, manager, null);
+            new RoleService<object>(manager, null);
         }
 
         [Test]
         public void ConstructorManagerNull()
         {
-            var context = Substitute.ForPartsOf<StatelessServiceContext>();
-            Assert.That(() => new RoleService<object>(context, null), Throws.TypeOf<ArgumentNullException>());
+            Assert.That(() => new RoleService<object>(null), Throws.TypeOf<ArgumentNullException>());
         }
 
         [Test]
