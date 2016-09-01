@@ -1,13 +1,13 @@
 ﻿namespace King.Service.ServiceFabric
 {
-    using System;
-    using System.Diagnostics;
-    using System.Threading;
-    using System.Threading.Tasks;
+    using King.Azure.Data;
     using Microsoft.ServiceFabric.Data.Collections;
     using Microsoft.ServiceFabric.Services.Runtime;
-    using King.Azure.Data;
+    using System;
+    using System.Diagnostics;
     using System.Fabric;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Dequeue Service

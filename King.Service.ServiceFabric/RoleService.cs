@@ -1,11 +1,11 @@
 ﻿namespace King.Service.ServiceFabric
 {
+    using Microsoft.ServiceFabric.Services.Runtime;
     using System;
     using System.Diagnostics;
+    using System.Fabric;
     using System.Threading;
     using System.Threading.Tasks;
-    using Microsoft.ServiceFabric.Services.Runtime;
-    using System.Fabric;
 
     /// <summary>
     /// Role Service
