@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Task scheduling for .Net: Service Fabric</Description>
+    <AssemblyTitle>King.Service.ServiceFabric</AssemblyTitle>
+    <VersionPrefix>1.0.4-preview</VersionPrefix>
+    <Authors>Jef King</Authors>
+    <TargetFrameworks>net462;net461;net46</TargetFrameworks>
+    <AssemblyName>King.Service.ServiceFabric</AssemblyName>
+    <PackageId>King.Service.ServiceFabric</PackageId>
+    <PackageTags>King.Service.ServiceFabric', 'Service', 'Fabric', 'ServiceFabric', 'SF', 'ASF', 'Azure', 'Queue', 'Service', 'Bus', 'EventHub', 'Event', 'Hub', 'service-bus', 'scale', 'Topic', 'Topics', 'PubSub', 'Publisher', 'Subscriber', 'Event', 'Time', 'Sensitive', 'time-sensitive', 'auto-scale', 'dynamic-scale', 'dynamic', 'Queuing', 'Background', 'Worker', 'Work', 'Data', 'Processing', 'Table', 'Environment', 'Initialize', 'Task', 'Tasks', 'volume', 'Dequeue', 'Dequeuing', 'run', 'task', 'service', 'services', 'tasks', 'scheduling', 'King.Service', 'King.Azure</PackageTags>
+    <PackageReleaseNotes>.NET Core support</PackageReleaseNotes>
+    <PackageIconUrl>https://raw.githubusercontent.com/jefking/King.Azure/master/icon.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/jefking/King.Azure</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/jefking/King.Azure/blob/master/LICENSE</PackageLicenseUrl>
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <RepositoryUrl>https://github.com/jefking/King.Service.ServiceFabric</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="King.Service" Version="2.2.1" />
+    <PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
+    <PackageReference Include="System.Threading.Tasks.Parallel" Version="4.3.0" />
+    <PackageReference Include="System.Runtime" Version="4.3.0" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services" Version="3.0.467" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net46' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+</Project>

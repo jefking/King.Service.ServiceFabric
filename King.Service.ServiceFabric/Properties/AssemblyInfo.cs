@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("King.Service.ServiceFabric")]
-[assembly: AssemblyCopyright("Copyright © Jef King 2016")]
+[assembly: AssemblyCopyright("Copyright © Jef King 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
